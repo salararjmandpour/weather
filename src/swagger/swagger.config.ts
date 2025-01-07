@@ -1,8 +1,7 @@
 import swaggerJsDoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";
 import { Express } from "express";
-import { weatherDocs, weatherSchema } from "./swagger.weather";  // وارد کردن weatherDocs
-
+import { weatherDocs, weatherSchema } from "./swagger.weather";  
 const options = {
   definition: {
     openapi: "3.0.0",
@@ -13,21 +12,19 @@ const options = {
     },
     servers: [
       {
-        url: "http://localhost:3000",
+        url: "https://weather2025.liara.run/",
       },
     ],
     components: {
-      schemas: weatherSchema,  // اضافه کردن schemas شما
+      schemas: weatherSchema,
     },
   },
-  // استفاده از weatherDocs به‌عنوان بخش تنظیمات مستندات API
-  apis: [], // می‌توانیم اینجا خالی بگذاریم زیرا از weatherDocs استفاده می‌کنیم
+  apis: [], 
 };
 
-// اضافه کردن weatherDocs به swaggerSpec
 const swaggerSpec = {
-  ...swaggerJsDoc(options),  // اضافه کردن تنظیمات اولیه
-  paths: weatherDocs,        // استفاده از weatherDocs برای تعریف مسیرهای API
+  ...swaggerJsDoc(options),
+  paths: weatherDocs,       
 };
 
 export function setupSwagger(app: Express) {
