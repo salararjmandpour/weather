@@ -11,7 +11,7 @@ app.use(express.json());
 
 setupSwagger(app);
 
-app.use(errorHandler);
 app.use("/", weatherRoutes);
+app.use(errorHandler);
 
 export default app;
